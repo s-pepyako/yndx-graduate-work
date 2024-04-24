@@ -8,7 +8,7 @@ variables:
 backend-build-job:
   stage: build
   image: 
-    name: gcr.io/kaniko-project/executor:v1.22.0
+    name: gcr.io/kaniko-project/executor:v1.9.0-debug
     entrypoint: [ "" ]
   script:
     - echo "version- ${VERSION}"
@@ -21,6 +21,8 @@ backend-build-job:
 
 backend-release-job:
   stage: release
+  needs:
+    - backend-build-job
   variables:
     GIT_STRATEGY: none
   image:
