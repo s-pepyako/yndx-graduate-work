@@ -7,7 +7,9 @@ variables:
 
 backend-build-job:
   stage: build
-  image: gcr.io/kaniko-project/executor:v1.22.0
+  image: 
+    name: gcr.io/kaniko-project/executor:v1.22.0
+    entrypoint: [ "" ]
   script:
     - echo "version- ${VERSION}"
     - /kaniko/executor
