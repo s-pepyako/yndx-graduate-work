@@ -11,3 +11,12 @@ trigger-backend:
         - backend/**/*
       if: $CI_COMMIT_MESSAGE =~ /CI/
 
+trigger-frontend:
+  stage: triggers
+  trigger:
+    include: frontend/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes: 
+        - frontend/**/*
+      if: $CI_COMMIT_MESSAGE =~ /CI/
