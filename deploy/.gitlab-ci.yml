@@ -8,7 +8,8 @@ deploy-helm-job:
     entrypoint: [ "sh" ]
   script:
     - helm template aa deploy/.
-    - ls -la
+    - tree
     - mkdir /root/.kube
     - echo '${KUBECONFIG}' > /root/.kube/config 
+    - chmod 700 -R /root/.kube
     - helm upgrade momo-store deploy/.
