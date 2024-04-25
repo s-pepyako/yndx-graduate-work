@@ -1,0 +1,13 @@
+global:
+  revLimit: 15
+
+backend:
+  image: gitlab.praktikum-services.ru:5050/std-024-06/diploma/momo-frontend:latest
+  replicas: 1
+  port: 8081
+
+frontend:
+  image: gitlab.praktikum-services.ru:5050/std-024-06/diploma/momo-backend:latest
+  replicas: 1
+  port: 80
+  varp: 

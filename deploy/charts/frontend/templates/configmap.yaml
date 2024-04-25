@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    server {
+    listen 80;
+
+    location ~ /(products|categories|orders|auth/whoami|metrics) {
+    proxy_pass http://momo-backend:8081;
+      }
+
+      location / {
+        root /app/frontend;
+        try_files $uri $uri/ /index.html;
+      }
+    }

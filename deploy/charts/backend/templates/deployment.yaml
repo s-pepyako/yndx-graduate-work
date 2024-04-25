@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas:  {{ .Values.replicas }} 
+  revisionHistoryLimit:  {{ .Values.global.revLimit }}
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image:  {{ .Values.image }} 
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - containerPort:  {{ .Values.port }}      
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
