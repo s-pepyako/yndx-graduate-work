@@ -34,4 +34,6 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: nginx-config
+          name: nginx-config-momo
+      imagePullSecrets:
+      - name: gitlab-registry-auth
