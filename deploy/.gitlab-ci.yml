@@ -7,9 +7,8 @@ deploy-helm-job:
     name: alpine/helm:3.14.4
     entrypoint: [ "sh" ]
   script:
-    - helm template aa deploy/.
-    - tree
     - mkdir /root/.kube
     - echo '${KUBECONFIG}' > /root/.kube/config 
     - chmod 700 -R /root/.kube
     - helm upgrade momo-store deploy/.
+    - rm /root/.kube/config 
