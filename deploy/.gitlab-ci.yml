@@ -10,5 +10,5 @@ deploy-helm-job:
     - mkdir /root/.kube
     - echo '${KUBECONFIG}' > /root/.kube/config 
     - chmod 700 -R /root/.kube
-    - helm upgrade momo-store deploy/.
+    - helm upgrade --install --atomic momo-store deploy/.
     - rm /root/.kube/config 
