@@ -4,7 +4,7 @@ stages:
 trigger-backend:
   stage: triggers
   trigger:
-    include: backend/.gitlab-ci.yml
+    include: backend/backend.gitlab-ci.yml
     strategy: depend
   rules:
     - changes: 
@@ -14,7 +14,7 @@ trigger-backend:
 trigger-frontend:
   stage: triggers
   trigger:
-    include: frontend/.gitlab-ci.yml
+    include: frontend/frontend.gitlab-ci.yml
     strategy: depend
   rules:
     - changes: 
