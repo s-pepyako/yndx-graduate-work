@@ -2,19 +2,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+  name: momo-ingress
 spec:
-  ingressClassName: alb
+  ingressClassName: "nginx"
+  tls:
+  - secretName: sudouser-net
+    hosts:
+      - "momo.sudouser.net"
   rules:
-    - http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: momo-frontend
-              port:
-                number: 80
+  - host: "momo.sudouser.net"
+    http: 
+      paths: 
+      - path: /  # Catches all paths
+        pathType: Prefix
+        backend:
+          service:
+            name: momo-frontend
+            port: 
+              number: 80
