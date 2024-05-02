@@ -27,4 +27,4 @@ backend-deploy-job:
     - backend-release-job
   rules:
     - if: $CI_COMMIT_MESSAGE =~ /CD/ 
-  extends: .helm-deploy-routine
+  extends: .helm-deploy-routine 

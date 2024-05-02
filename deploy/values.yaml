@@ -12,5 +12,5 @@ frontend:
   replicas: 1
   port: 80
   hostname: momo.sudouser.net
-  tls-key: 
-  tls-cert:
+  tlskey: 
+  tlscert: 
