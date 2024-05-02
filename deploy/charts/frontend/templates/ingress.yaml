@@ -9,12 +9,12 @@ spec:
   tls:
   - secretName: sudouser-net
     hosts:
-      - "momo.sudouser.net"
+      - {{ .Values.hostname }}
   rules:
-  - host: "momo.sudouser.net"
+  - host: {{ .Values.hostname }}
     http: 
       paths: 
-      - path: /  # Catches all paths
+      - path: / 
         pathType: Prefix
         backend:
           service:
