@@ -24,7 +24,7 @@ trigger-frontend:
 trigger-deploy:
   stage: triggers
   trigger:
-    include: deploy/.gitlab-ci.yml
+    include: deploy/deploy.gitlab-ci.yml
     strategy: depend
   rules:
     - changes: 

@@ -1,3 +1,5 @@
+regcreds: 
+
 global:
   revLimit: 15
   namespace: momo-store
