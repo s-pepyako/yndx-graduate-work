@@ -1,5 +1,6 @@
 global:
   revLimit: 15
+  namespace: momo-store
 
 backend:
   image: gitlab.praktikum-services.ru:5050/std-024-06/diploma/momo-backend:latest
