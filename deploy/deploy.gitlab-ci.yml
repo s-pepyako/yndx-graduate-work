@@ -9,10 +9,10 @@ deploy-helm-job:
   script:
     - apk add aws-cli
     - aws eks --region ${AWS_REGION} update-kubeconfig --name ${EKS_CLUSTER_NAME}
-    - helm upgrade --install --atomic \
-      --set regcreds=${REG_CREDS} \
-      --set global.namespace=${PROD_NAMESPACE} \
-      --set frontend.hostname=${PROD_DOMAIN} \
-      --set frontend.tlskey=${TLS_KEY} \
-      --set frontend.tlscert=${TLS_CERT} \
+    - helm upgrade --install --atomic 
+      --set regcreds=${REG_CREDS} 
+      --set global.namespace=${PROD_NAMESPACE} 
+      --set frontend.hostname=${PROD_DOMAIN} 
+      --set frontend.tlskey=${TLS_KEY} 
+      --set frontend.tlscert=${TLS_CERT} 
       momo-store deploy/.
