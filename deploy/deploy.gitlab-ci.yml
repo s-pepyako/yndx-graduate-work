@@ -17,3 +17,4 @@ deploy-helm-job:
       --set frontend.tlskey=${TLS_KEY} 
       --set frontend.tlscert=${TLS_CERT} 
       momo-store deploy/.
+      
