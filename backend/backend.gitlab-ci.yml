@@ -28,3 +28,4 @@ backend-deploy-job:
   rules:
     - if: $CI_COMMIT_MESSAGE =~ /CD/ 
   extends: .helm-deploy-routine 
+  

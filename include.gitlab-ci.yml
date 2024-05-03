@@ -27,10 +27,14 @@
     name: alpine/helm:3.14.4
     entrypoint: [ "sh" ]
   script:
-    - mkdir /root/.kube
-    - echo '${KUBECONFIG}' > /root/.kube/config 
-    - chmod 700 -R /root/.kube
-    - helm upgrade --install --atomic
+    - apk add aws-cli
+    - aws eks --region ${AWS_REGION} update-kubeconfig 
+      --name ${EKS_CLUSTER_NAME} --role-arn ${EKS_ROLE_ARN}
+    - helm upgrade --install --atomic --namespace ${PROD_NAMESPACE}
+      --set regcreds=${REG_CREDS} 
+      --set global.namespace=${PROD_NAMESPACE} 
+      --set frontend.hostname=${PROD_DOMAIN} 
+      --set frontend.tlskey=${TLS_KEY} 
+      --set frontend.tlscert=${TLS_CERT} 
       --set ${SERVICE_NAME}.image=$CI_REGISTRY_IMAGE/${RELEASE_NAME}:${VERSION} 
       momo-store deploy/.
-    - rm /root/.kube/config 
