@@ -38,3 +38,5 @@ spec:
           name: nginx-config-momo
       imagePullSecrets:
       - name: gitlab-registry-auth
+      nodeSelector:
+        topology.kubernetes.io/zone: eu-central-1a
