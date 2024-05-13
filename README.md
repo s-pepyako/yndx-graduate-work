@@ -69,7 +69,7 @@ terraform apply -auto-approve
 ./add_kubeconfig.sh
 
 
-# Развернуть ingress-nginx контроллер и добавить rbac роль для деплоя
+# Добавить рабочий неймспейсм, развернуть ingress-nginx контроллер и добавить rbac роль для деплоя
 cd ../postproc
 ./postproc.sh
 
