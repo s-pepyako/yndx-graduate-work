@@ -1,5 +1,8 @@
+regcreds: 
+
 global:
   revLimit: 15
+  namespace: momo-store
 
 backend:
   image: gitlab.praktikum-services.ru:5050/std-024-06/diploma/momo-backend:latest
@@ -10,3 +13,6 @@ frontend:
   image: gitlab.praktikum-services.ru:5050/std-024-06/diploma/momo-frontend:latest
   replicas: 1
   port: 80
+  hostname: momo.sudouser.net
+  tlskey: 
+  tlscert: 

@@ -1,0 +1,21 @@
+stages:
+  - deploy
+
+deploy-helm-job:
+  stage: deploy
+  image:
+    name: alpine/helm:3.14.4
+    entrypoint: [ "sh" ]
+  script:
+    - apk add aws-cli
+    - aws eks --region ${AWS_REGION} update-kubeconfig 
+      --name ${EKS_CLUSTER_NAME} --role-arn ${EKS_ROLE_ARN}
+    - helm upgrade --install --atomic --namespace ${PROD_NAMESPACE}
+      --set regcreds=${REG_CREDS} 
+      --set global.namespace=${PROD_NAMESPACE} 
+      --set frontend.hostname=${PROD_DOMAIN} 
+      --set frontend.tlskey=${TLS_KEY} 
+      --set frontend.tlscert=${TLS_CERT} 
+      momo-store deploy/.
+
+#00      

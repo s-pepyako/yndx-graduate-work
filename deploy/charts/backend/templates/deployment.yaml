@@ -2,6 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: {{ .Values.global.namespace }}
   name: backend
 spec:
   replicas:  {{ .Values.replicas }} 
@@ -13,6 +14,10 @@ spec:
     metadata:
       labels:
         app: backend
+      annotations:  
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8081"
+        prometheus.io/scrape: "true" 
     spec:
       containers:
       - name: backend
@@ -29,3 +34,5 @@ spec:
             cpu: "200m"
       imagePullSecrets:
       - name: gitlab-registry-auth
+      nodeSelector:
+        topology.kubernetes.io/zone: eu-central-1a

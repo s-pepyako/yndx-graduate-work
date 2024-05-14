@@ -2,11 +2,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: {{ .Values.global.namespace }}
   name: nginx-config-momo
 data:
   nginx.conf: |
     server {
-    listen 80;
+    listen 8080;
 
     location ~ /(products|categories|orders|auth/whoami|metrics) {
     proxy_pass http://momo-backend:8081;
