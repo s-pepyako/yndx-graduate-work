@@ -20,16 +20,17 @@
 ### CI/CD
 Автоматические сборка и деплой реализованы в пайплайнах Gitlab CI.
 #### Триггеры пайплайнов
-<span style="color:yellow">
-!Frontend и Backend не могут быть одновременно задеплоены после одновременного билда!</span>
 
-```- Сборка frontend: (изменеия в директории **/frontend**) & (Строка **"CI"** в тексте коммита)
+
+
+- Сборка frontend: (изменеия в директории **/frontend**) & (Строка **"CI"** в тексте коммита)
 - Деплой frontend: (сборка frontend) & (Строка **"CD"** в тексте коммита)
 - Сборка backend: (изменеия в директории **/backend**) & (Строка **"CI"** в тексте коммита)
 - Деплой backend: (сборка backend) & (Строка **"CD"** в тексте коммита)
 - Общий деплой: (изменеия в директории **/deploy**) & (Строка **"DEPLOY"** в тексте коммита)
-```
 
+<span style="color:yellow">
+!Frontend и Backend не могут быть одновременно задеплоены после одновременного билда через ключ "CD"!</span> Для одновременного деплоя использовать ключ "DEPLOY"
   
 ---
 
@@ -103,3 +104,22 @@ $REG_CREDS - base64 данные для доступа imagePullSecrets в conta
 $TLS_CERT - base64 сертификат HTTPS для $PROD_DOMAIN  
 $TLS_KEY - base64 ключ HTTPS для $PROD_DOMAIN  
 ```
+
+
+# Скриншоты
+
+**Зеленые пайплайны**
+![Screenshot](https://momo-img-bucket.s3.eu-central-1.amazonaws.com/screenshots/Gitlab+Pipelines.jpg)
+
+**Деплой EKS кластера через Terraform**
+![Screenshot](https://momo-img-bucket.s3.eu-central-1.amazonaws.com/screenshots/Terraform+success.jpg)
+
+**Выполнение скриптов донастройки кластера**
+![Screenshot](https://momo-img-bucket.s3.eu-central-1.amazonaws.com/screenshots/Cluster+postprocessing.jpg)
+
+**Дешборды AWS c автоматически развернутыми ресурсами**
+![Screenshot](https://momo-img-bucket.s3.eu-central-1.amazonaws.com/screenshots/EC2+Instances.jpg)
+
+![Screenshot](https://momo-img-bucket.s3.eu-central-1.amazonaws.com/screenshots/EKS+Dashboard.jpg)
+
+![Screenshot](https://momo-img-bucket.s3.eu-central-1.amazonaws.com/screenshots/ELB+Dashboard.jpg)
