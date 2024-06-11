@@ -1,4 +1,4 @@
-# DevOps course graduation task
+# DevOps course graduation work
 
 
 ## Application
